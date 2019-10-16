@@ -1,0 +1,32 @@
+{
+    "name": "@kawix/netrpa",
+    "description": "Access to all types from .NET Core/Framework in Node.js",
+    "browser": "./crossplatform/dist/main.js",
+    "keywords": [
+        "dotnet",
+        "netcore",
+        "compiler",
+        "c#",
+        "csharp",
+        "rpa",
+        "netrpa",
+        "ipc",
+        "kodhe"
+    ],
+    "version": "0.1.0",
+    "main": "main.js",
+    "directories": {
+        "example": "example",
+        "test": "test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kodhework/netrpa.git"
+    },
+    "author": "Kodhe <developer@kodhe.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/kodhework/netrpa/issues"
+    },
+    "homepage": "https://github.com/kodhework/netrpa#readme"
+}
