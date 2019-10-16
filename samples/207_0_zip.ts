@@ -1,11 +1,18 @@
 import { Channel as NetRPA } from '../Channel'
 import Path from 'path'
+import fs from 'fs'
 
 
 
-main()
-async function main() {
-    let channel = await NetRPA.create()
+if (!process.env.NETRPA_RETURN_FUNC) {
+    Invoke().then(function () { }).catch(function (er) {
+        console.error("Error executing sample: ", er)
+        process.exit()
+    })
+}
+
+export async function Invoke(channel?) {
+    if (!channel) channel = await NetRPA.create()
 
     // Load Assemblies 
     await channel.client.LoadAssemblyPartialName("System.IO.Compression.FileSystem")
@@ -30,11 +37,16 @@ async function main() {
     
     `, 'Test')
 
-    await Test.Invoke({
+    let params = {
         source: __dirname,
-        destination: Path.join(__dirname,"..", "samples.zip")
-    })
+        destination: Path.join(__dirname, "..", "samples.zip")
+    }
+    
+    if(fs.existsSync(params.destination)) fs.unlinkSync(params.destination)
+
+    
+    await Test.Invoke(params)
     console.log("The samples directory has been compressed to ../samples.zip file.")
 
-    channel.close()
+    if (!process.env.NETRPA_RETURN_FUNC) channel.close()
 }

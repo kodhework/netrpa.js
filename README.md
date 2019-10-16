@@ -313,7 +313,7 @@ class NetRPA.Compiler.CSharp{
 
 RPA Provides two types of serialization from javascript to C#: 
 
-* Plain objects passed in c# as ExpandoObject (IDictionary<string, object>) 
+* Plain objects passed in c# as DynamicRemoteObject (IDictionary<string, object>). Arrays are passed as object[]
 
 ```javascript
 
@@ -341,7 +341,7 @@ async function main(){
 ```
 
 
-* Proxied objects passed in c# as DynamicRemoteObject (DynamicObject, IDictionary<string, object>)
+* Proxied objects passed in c# as DynamicRemoteObject (DynamicObject, IDictionary<string, object>), and if is array passed as: DynamicRemoteArrayObject (DynamicObject, IDictionary<string, object>, IList<object>)
 
 **NOTE**: By default, RPA uses a mixed Plain/Proxied serialization. If ```parameter``` protype is object, all properties with primitive values will be passed as plain, but also is passed as Proxy for make available its functions. For understand this see the example: 
 

@@ -1,11 +1,18 @@
 import { Channel as NetRPA } from '../Channel'
 import Path from 'path'
+import fs from 'fs'
 
 
 
-main()
-async function main() {
-    let channel = await NetRPA.create()
+if (!process.env.NETRPA_RETURN_FUNC) {
+    Invoke().then(function () { }).catch(function (er) {
+        console.error("Error executing sample: ", er)
+        process.exit()
+    })
+}
+
+export async function Invoke(channel?) {
+    if (!channel) channel = await NetRPA.create()
 
     // Load Assemblies 
     await channel.client.LoadAssemblyPartialName("System.IO.Compression.FileSystem")
@@ -14,12 +21,17 @@ async function main() {
     
     using System;
     using System.Threading.Tasks;
+    using System.IO;
     using System.IO.Compression;
 
     public class Test
     {
         public async Task Invoke(dynamic input)
         {
+            DirectoryInfo d = new DirectoryInfo(input.destination);
+            if(d.Exists){
+                d.Delete(true);
+            }
 
             await Task.Run(async () => {
                 ZipFile.ExtractToDirectory((string)input.source, (string)input.destination);
@@ -36,5 +48,5 @@ async function main() {
     })
     console.log("The ../samples.zip file has been decompressed to ../samples_tmp directory")
 
-    channel.close()
+    if (!process.env.NETRPA_RETURN_FUNC) channel.close()
 }

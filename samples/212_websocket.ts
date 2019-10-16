@@ -7,9 +7,15 @@ import { Server as WebSocketServer} from 'ws'
 
 //var WebSocketServer = ws.WebSocketServer
 
-main()
-async function main() {
-    let channel = await NetRPA.create()
+if (!process.env.NETRPA_RETURN_FUNC) {
+    Invoke().then(function () { }).catch(function (er) {
+        console.error("Error executing sample: ", er)
+        process.exit()
+    })
+}
+
+export async function Invoke(channel?) {
+    if (!channel) channel = await NetRPA.create()
 
 
     let compiler = await channel.client.CSharpCompiler()
