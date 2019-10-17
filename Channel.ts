@@ -22,7 +22,7 @@ export class Channel{
 
         let def = new async.Deferred<void>()
         let p : ChildProcess
-        let exe = "dotnet", dotnetversion
+        let exe = "dotnet", dotnetversion = ''
         if(Os.platform() == "win32"){
             let pathvar = process.env.PATH.split(";")
             for(let path of pathvar){
@@ -37,7 +37,7 @@ export class Channel{
         p = Child.spawn(exe, ["--info"])
         p.stdout.on("data", function(d){
             d.toString().replace(/Microsoft\.NETCore\.App\s([0-9A-Za-z\.\-\_\s]+)\s\[/g, function(_, a){
-                if(a &&  a > dotnetversion)
+                if(a &&  a >= dotnetversion)
                     dotnetversion = a 
             })
         })

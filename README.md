@@ -6,7 +6,34 @@ By default you can compile dynamically C# source code
 
 If you will use with [```@kawix/core```](https://github.com/kodhework/kawix/blob/master/core/INSTALL.md) executable: 
 
-### Import module
+
+### Requirements 
+
+1. Node 10+
+2. .NET Core 3.0.0 runtime or superior
+3. GNU/Linux, Windows or Mac (no tested on Mac should works, please make an issue if not)
+4. .NET Core 3.0.0 SDK or superior if you want build the C# project
+
+
+### Build the c# project 
+
+1. Install [```@kawix/core```](https://github.com/kodhework/kawix/blob/master/core/INSTALL.md)
+2. Clone this project and execute build file 
+
+```bash 
+git clone https://github.com/kodhework/netrpa.js
+cd netrpa.js 
+kwcore build
+```
+
+Dll files are copied to ```bin/netcore```
+
+
+### NPM project (coming soon)
+
+NOTE: Just now module still not published. If you want use clone the repo, build the dlls, and ```require('path/to/netrpa)``` in nodejs, or ```import from '/path/to/netrpa/Channel'``` in ```@kawix/core```
+
+
 
 ```javascript
 import 'npm://@kawix/netrpa@0.1.0'
@@ -46,13 +73,12 @@ NetRPAMod.ready(function(NetRPA){
 **NOTE**: From here, all examples will use the @kawix/core executable style, but you can use with nodejs without @kawix/core executable. 
 
 
+
 ### Usage
 
 * See how NetRPA can be compatible with ```edge``` module for lambdas: 
 
 ```javascript
-import 'npm://@kawix/netrpa@0.1.0'
-import {Channel as NetRPA} from 'netrpa'
 
 main()
 async function main(){
@@ -72,8 +98,6 @@ async function main(){
 Previous example will work, but you can get faster results using full Class declaration with strong types: 
 
 ```javascript
-import 'npm://@kawix/netrpa@0.1.0'
-import {Channel as NetRPA} from 'netrpa'
 
 main()
 async function main(){
@@ -317,8 +341,6 @@ RPA Provides two types of serialization from javascript to C#:
 
 ```javascript
 
-import 'npm://@kawix/netrpa@0.1.0'
-import {Channel as NetRPA} from 'netrpa'
 
 main()
 async function main(){
@@ -348,8 +370,6 @@ async function main(){
 
 ```javascript
 
-import 'npm://@kawix/netrpa@0.1.0'
-import {Channel as NetRPA} from 'netrpa'
 
 main()
 async function main(){
@@ -390,9 +410,6 @@ From C# to Javascript
 
 ```javascript
 
-import 'npm://@kawix/netrpa@0.1.0'
-import {Channel as NetRPA} from 'netrpa'
-
 main()
 async function main(){
     
@@ -428,9 +445,6 @@ async function main(){
 
 
 ```javascript
-
-import 'npm://@kawix/netrpa@0.1.0'
-import {Channel as NetRPA} from 'netrpa'
 
 main()
 async function main(){
