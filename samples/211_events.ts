@@ -68,7 +68,7 @@ export async function Invoke(channel?) {
         }
     })
     console.log('Subscribed to .NET events. Unsubscribing in 8 seconds...');
-
+    
     await async.sleep(8000)
     await unsuscribe()
 

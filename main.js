@@ -20,7 +20,7 @@ if(!global.kawix){
 }
 
 
-global.kawix.KModule.import(__dirname + "/Channel.ts").then(function(mod){
+global.kawix.KModule.import(__dirname + "/src/Channel.ts").then(function(mod){
     netrpa.Channel = mod.Channel 
     netrpa._ready && netrpa._ready(mod.Channel)
 }).catch(function(e){
