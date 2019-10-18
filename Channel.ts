@@ -1,6 +1,7 @@
 
 // import STDLIB for RPA Library 
-import 'https://kwx.kodhe.com/x/v/0.7.3/std/dist/stdlib'
+// should be 0.7.4 or superior
+import 'https://kwx.kodhe.com/x/v/0.7.4/std/dist/stdlib'
 
 
 import {Channel as RPA} from '/virtual/@kawix/std/rpa/channel'

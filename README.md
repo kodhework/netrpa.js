@@ -4,18 +4,19 @@ This project allows using all .NET Core functionality on Windows, GNU/Linux and 
 
 By default you can compile dynamically C# source code
 
-If you will use with [```@kawix/core```](https://github.com/kodhework/kawix/blob/master/core/INSTALL.md) executable: 
-
-
 ### Requirements 
 
-1. Node 10+
+1. [```@kawix/core```](https://github.com/kodhework/kawix/blob/master/core/INSTALL.md) or Node 10+
 2. .NET Core 3.0.0 runtime or superior
 3. GNU/Linux, Windows or Mac (no tested on Mac should works, please make an issue if not)
 4. .NET Core 3.0.0 SDK or superior if you want build the C# project
 
 
-### Build the c# project 
+
+
+### Using from github repo 
+
+#### Clone and build c# project
 
 1. Install [```@kawix/core```](https://github.com/kodhework/kawix/blob/master/core/INSTALL.md)
 2. Clone this project and execute build file 
@@ -29,36 +30,30 @@ kwcore build
 Dll files are copied to ```bin/netcore```
 
 
-### NPM project (coming soon)
+3. Now you can use in your project
 
-NOTE: Just now module still not published. If you want use clone the repo, build the dlls, and ```require('path/to/netrpa)``` in nodejs, or ```import from '/path/to/netrpa/Channel'``` in ```@kawix/core```
-
-
+Using [```@kawix/core```](https://github.com/kodhework/kawix/blob/master/core/INSTALL.md): 
 
 ```javascript
-import 'npm://@kawix/netrpa@0.1.0'
-import {Channel as NetRPA} from 'netrpa'
+import {Channel as NetRPA} from '/path/to/netrpa/Channel'
 
 main()
 async function main(){
     let channel = await NetRPA.create()
     // ....
 }
-
 ```
 
-
-If you use with pure node: 
+Or using node.js 
 
 Install the modules:
 ```bash
 npm install @kawix/core
-npm install @kawix/netrpa
 ```
 
 ```javascript 
 require("@kawix/core")
-var NetRPAMod = require("@kawix/netrpa")
+var NetRPAMod = require("/path/to/netrpa")
 
 NetRPAMod.ready(function(NetRPA){
     NetRPA.create().then(function(channel){
@@ -70,7 +65,10 @@ NetRPAMod.ready(function(NetRPA){
 ```
 
 
-**NOTE**: From here, all examples will use the @kawix/core executable style, but you can use with nodejs without @kawix/core executable. 
+
+### NPM module
+
+(coming soon)
 
 
 
